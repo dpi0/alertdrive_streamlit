@@ -1,4 +1,4 @@
-.streamlit/
+.streamlit/secrets.toml
 .vscode/
 secrets.toml
 **/*.env

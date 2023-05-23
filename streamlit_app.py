@@ -27,15 +27,16 @@ from contact_utils.constants import (
 st.set_page_config(
     page_title="AlertDrive: Deep Learning Based Alertness Evaluation",
     page_icon="alertdrive.ico",
+    initial_sidebar_state="collapsed"
 )
 
 load_dotenv()
 
-alarm_file_path = os.path.join("alert_helper", "assets", "audio_files", "wake_up.wav")
-
+ALARM_FILE_PATH = os.path.join(
+    "alert_helper", "assets", "audio_files", "wake_up.wav"
+)
 WAIT_DOZEOFF_TIME = 4
 WAIT_HEADPOSN_TIME = 5
-
 EAR_THRESH = 0.14
 LEFT_THRESH = 18
 RIGHT_THRESH = 18
@@ -54,7 +55,7 @@ thresholds = {
 }
 
 video_handler = VideoFrameHandler()
-audio_handler = AudioFrameHandler(sound_file_path=alarm_file_path)
+audio_handler = AudioFrameHandler(sound_file_path=ALARM_FILE_PATH)
 
 lock = threading.Lock()
 
@@ -92,15 +93,13 @@ def get_ice_servers():
 
 
 def hide_all():
-    st.set_page_config(initial_sidebar_state="collapsed")
-
     st.markdown(
         """
     <style>
         [data-testid="collapsedControl"] {
             display: none
         }
-        #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 4rem;}
+        #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2.6rem;}
         div[data-testid="stSidebarNav"] {display: none;}
         .css-15zrgzn {display: none}
         .css-1dp5vir {display: none} 
@@ -112,7 +111,7 @@ def hide_all():
     )
 
 
-# hide_all()
+hide_all()
 
 navbar = option_menu(
     menu_title=None,
@@ -376,9 +375,11 @@ def display_login():
         st.markdown(
             f"#### 👋 Welcome {data_db['credentials']['usernames'][user_name]['name']}, {data_db['credentials']['usernames'][user_name]['email']}"
         )
-        
+
         st.write("")
-        st.markdown("##### Now click start, and we'll see how well you perform!")
+        st.markdown(
+            "##### Now click start, and we'll see how well you perform!"
+        )
 
         ctx = webrtc_streamer(
             key="drowsiness-detection",
@@ -395,7 +396,7 @@ def display_login():
             ),
             async_processing=True,
         )
-                
+
         authenticator.logout("Logout", "main", key="key_logout")
 
     st.write("")
