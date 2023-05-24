@@ -213,8 +213,8 @@ def display_home():
 
 
 def display_about():
-    st.markdown("# About")
-    st.markdown("### Introduction")
+    st.markdown("# 👨🏽About Me")
+    # st.markdown("### Introduction")
     st.markdown(
         """
         **:red[AlertDrive]**, developed as part of my B.Tech project at **:green[Jamia Hamdard University]**, is a powerful tool that **helps drivers stay alert and attentive** on the road.

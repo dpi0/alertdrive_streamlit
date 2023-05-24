@@ -261,8 +261,8 @@ class VideoFrameHandler:
 
             # NOTE: plotting everything
             HEADPOSN_text = f"HEAD POSITION: {headposn}"
-            DOZEOFF_TIME_text = f"DOZEOFF TIME: {round(self.state_tracker['DOZEOFF_TIME'], 3)} secs"
-            HEAD_TIME_text = f"HEAD TIME: {round(self.state_tracker['HEAD_TIME'], 3)} secs"
+            DOZEOFF_TIME_text = f"DOZEOFF WAIT TIME: {round(self.state_tracker['DOZEOFF_TIME'], 2)} secs"
+            HEAD_TIME_text = f"HEADPOSN WAIT TIME: {round(self.state_tracker['HEAD_TIME'], 2)} secs"
 
             plot_text(
                 frame,
