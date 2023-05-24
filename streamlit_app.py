@@ -27,7 +27,7 @@ from contact_utils.constants import (
 st.set_page_config(
     page_title="AlertDrive: Deep Learning Based Alertness Evaluation",
     page_icon="alertdrive.ico",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="collapsed",
 )
 
 load_dotenv()
@@ -353,7 +353,7 @@ def display_login():
         "🔒Login", "main"
     )
 
-    flag_loggedin = False
+    USER_LOGGEDIN = False
 
     if auth_status is False:
         st.error("⛔ Incorrect username or password. Try Again.")
@@ -362,7 +362,7 @@ def display_login():
         st.warning("⚠️ Please enter your username and password")
 
     else:
-        flag_loggedin = True
+        USER_LOGGEDIN = True
         message_logged_in = st.success("🎉 Successfully logged in!")
         message_logged_in.empty()
         col1, mid, col2 = st.columns([1, 1, 14])
@@ -373,9 +373,9 @@ def display_login():
             st.markdown(original_title, unsafe_allow_html=True)
 
         st.markdown(
-            f"#### 👋 Welcome {data_db['credentials']['usernames'][user_name]['name']}, {data_db['credentials']['usernames'][user_name]['email']}"
+            f"#### 👋 Welcome {data_db['credentials']['usernames'][user_email]['name']}, {data_db['credentials']['usernames'][user_email]['email']}"
         )
-
+        
         st.write("")
         st.markdown(
             "##### Now click start, and we'll see how well you perform!"
@@ -404,7 +404,7 @@ def display_login():
     st.write("")
     st.write("")
 
-    if not flag_loggedin:
+    if not USER_LOGGEDIN:
         st.write("Don't have an account?")
         signup_button = st.button("Signup")
         if signup_button:
